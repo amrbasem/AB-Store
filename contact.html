@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | A.B Store Riyadh</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-navy: #0A0F2C;
+            --color-gold: #C9A84C;
+            --radius: 4px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; color: #1A1A1A; line-height: 1.6; }
+        
+        .navbar { padding: 1.5rem 5%; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--color-gold); text-decoration: none; }
+
+        .container { max-width: 1100px; margin: 4rem auto; padding: 0 5%; }
+        .contact-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 5rem; }
+
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 2rem; color: var(--color-navy); }
+        
+        /* FORM */
+        .input-group { margin-bottom: 1.5rem; }
+        label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; color: #888; }
+        input, select, textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: var(--radius); font-family: inherit; font-size: 1rem; }
+        input:focus { border-color: var(--color-gold); outline: none; }
+        
+        .btn-send { width: 100%; padding: 18px; background: var(--color-navy); color: white; border: none; border-radius: var(--radius); font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 1rem; }
+        .btn-send:hover { background: var(--color-gold); }
+
+        /* INFO CARD */
+        .info-card { background: #fafafa; padding: 3rem; border-radius: 12px; }
+        .info-block { margin-bottom: 2rem; }
+        .info-block h4 { color: var(--color-gold); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px; }
+        .info-block p { font-size: 1.1rem; font-weight: 500; }
+
+        /* FAQ */
+        .faq { margin-top: 5rem; border-top: 1px solid #eee; padding-top: 4rem; }
+        .faq-item { border-bottom: 1px solid #eee; padding: 1.5rem 0; cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s; color: #666; font-size: 0.95rem; }
+        .faq-item.active .faq-answer { max-height: 100px; margin-top: 1rem; }
+
+        @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">A.B</a>
+    </header>
+
+    <div class="container">
+        <h1>Let's Connect</h1>
+        <div class="contact-grid">
+            <form id="cForm">
+                <div class="input-group"><label>Full Name</label><input type="text" placeholder="Your Name" required></div>
+                <div class="input-group"><label>Email Address</label><input type="email" placeholder="email@example.com" required></div>
+                <div class="input-group">
+                    <label>Enquiry Type</label>
+                    <select>
+                        <option>Order Tracking</option>
+                        <option>Product Information</option>
+                        <option>Returns & Exchanges</option>
+                        <option>Corporate Gifting</option>
+                    </select>
+                </div>
+                <div class="input-group"><label>Message</label><textarea rows="5" placeholder="How can we help you today?" required></textarea></div>
+                <button type="submit" class="btn-send">Send Message</button>
+            </form>
+
+            <aside class="info-card">
+                <div class="info-block"><h4>Flagship Office</h4><p>Al Olaya District, King Fahd Road<br>Riyadh, Saudi Arabia</p></div>
+                <div class="info-block"><h4>Customer Care</h4><p>+966 11 123 4567<br>support@abstore.com</p></div>
+                <div class="info-block"><h4>Hours</h4><p>Sunday — Thursday<br>9:00 AM — 6:00 PM (AST)</p></div>
+            </aside>
+        </div>
+
+        <section class="faq">
+            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">What is your shipping policy in KSA? <span>+</span></div>
+                <div class="faq-answer">We offer same-day delivery in Riyadh and 2-3 day express shipping to Jeddah, Dammam, and other regions.</div>
+            </div>
+            <div class="faq-item" onclick="this.classList.toggle('active')">
+                <div class="faq-question">Do you offer international returns? <span>+</span></div>
+                <div class="faq-answer">Yes, we accept returns within 14 days of receipt. Please ensure items are in original packaging with tags attached.</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="cart-system.js"></script>
+</body>
+</html>

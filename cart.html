@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bag | A.B Store Riyadh</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-navy: #0A0F2C;
+            --color-gold: #C9A84C;
+            --color-gray: #F5F5F5;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --radius-md: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); color: #1A1A1A; background: #fff; line-height: 1.6; }
+
+        .navbar { padding: 1.5rem 5%; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--color-gold); text-decoration: none; }
+        
+        .container { max-width: 1100px; margin: 3rem auto; padding: 0 5%; }
+        h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 2rem; }
+
+        .cart-layout { display: grid; grid-template-columns: 1.8fr 1fr; gap: 3rem; }
+
+        /* CART ITEMS */
+        .cart-items { border-top: 1px solid #eee; }
+        .cart-item { display: grid; grid-template-columns: 100px 2fr 1fr 1fr auto; align-items: center; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid #eee; }
+        .cart-img { width: 100px; height: 100px; border-radius: 8px; background: var(--color-gray); object-fit: cover; }
+        .item-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
+        
+        .qty-btns { display: flex; border: 1px solid #ddd; width: fit-content; border-radius: 4px; overflow: hidden; }
+        .qty-btns button { padding: 5px 12px; background: white; border: none; cursor: pointer; font-weight: 700; }
+        .qty-btns span { padding: 5px 15px; background: #fafafa; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+
+        .remove-btn { color: #999; cursor: pointer; font-size: 1.2rem; }
+        .remove-btn:hover { color: #cc0000; }
+
+        /* SUMMARY */
+        .summary-card { background: var(--color-gray); padding: 2rem; border-radius: var(--radius-md); position: sticky; top: 100px; }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 1rem; }
+        .total-row { border-top: 1px solid #ddd; margin-top: 1rem; padding-top: 1rem; font-size: 1.3rem; font-weight: 700; color: var(--color-navy); }
+
+        /* SHIPPING PROGRESS */
+        .shipping-progress { margin-bottom: 2rem; }
+        .progress-text { font-size: 0.85rem; margin-bottom: 8px; }
+        .bar-bg { height: 6px; background: #ddd; border-radius: 10px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--color-gold); width: 0%; transition: 1s ease-in-out; }
+
+        .btn-checkout { 
+            width: 100%; padding: 18px; background: var(--color-gold); color: white; 
+            border: none; border-radius: 4px; font-weight: 700; font-size: 1.1rem; cursor: pointer; margin-top: 1.5rem; display: block; text-align: center; text-decoration: none;
+        }
+        .btn-checkout:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        .payment-logos { display: flex; justify-content: center; gap: 15px; margin-top: 1.5rem; font-size: 1.5rem; filter: grayscale(1); opacity: 0.5; }
+
+        /* EMPTY STATE */
+        #empty-msg { display: none; text-align: center; padding: 5rem 0; }
+
+        @media (max-width: 850px) {
+            .cart-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">A.B</a>
+        <nav><a href="shop.html" style="text-decoration:none; color:inherit; font-weight:500;">← Continue Shopping</a></nav>
+    </header>
+
+    <div class="container">
+        <h1>Your Shopping Bag</h1>
+
+        <div class="cart-layout" id="cart-container">
+            <div class="cart-items" id="cart-list">
+                </div>
+
+            <aside>
+                <div class="summary-card">
+                    <div class="shipping-progress">
+                        <p class="progress-text" id="ship-text">Add more to unlock Free Shipping!</p>
+                        <div class="bar-bg"><div class="bar-fill" id="ship-fill"></div></div>
+                    </div>
+
+                    <div class="summary-row"><span>Subtotal</span><span id="subtotal">0 SAR</span></div>
+                    <div class="summary-row"><span>Estimated Shipping</span><span id="shipping">0 SAR</span></div>
+                    <div class="total-row summary-row"><span>Total</span><span id="total">0 SAR</span></div>
+
+                    <a href="checkout.html" class="btn-checkout">Proceed to Checkout</a>
+                    
+                    <div class="payment-logos"> Mada · Apple Pay · Visa </div>
+                </div>
+            </aside>
+        </div>
+
+        <div id="empty-msg">
+            <h2 style="font-family: var(--font-heading); font-size: 2rem;">Your bag is empty.</h2>
+            <p>Ready to find your next luxury piece?</p>
+            <a href="shop.html" class="btn-checkout" style="width: 250px; margin: 2rem auto;">Start Shopping</a>
+        </div>
+    </div>
+
+    <script src="cart-system.js"></script>
+    <script>
+        // Render Function for the Cart Page
+        function renderCart() {
+            const list = document.getElementById('cart-list');
+            const container = document.getElementById('cart-container');
+            const empty = document.getElementById('empty-msg');
+
+            if (cart.length === 0) {
+                container.style.display = 'none';
+                empty.style.display = 'block';
+                return;
+            }
+
+            list.innerHTML = '';
+            cart.forEach((item, index) => {
+                list.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.img}" class="cart-img">
+                        <div class="item-info">
+                            <h4>${item.name}</h4>
+                            <p style="color:#888; font-size:0.8rem">Item ID: ${item.id}</p>
+                        </div>
+                        <div class="qty-btns">
+                            <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        <div style="font-weight:700">${(item.price * item.qty).toLocaleString()} SAR</div>
+                        <div class="remove-btn" onclick="removeItem(${item.id})">×</div>
+                    </div>
+                `;
+            });
+            calculateTotals();
+        }
+
+        function calculateTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const freeShipThreshold = 300;
+            const shippingCost = subtotal > freeShipThreshold ? 0 : 35; // 35 SAR standard shipping
+            
+            document.getElementById('subtotal').innerText = `${subtotal.toLocaleString()} SAR`;
+            document.getElementById('shipping').innerText = shippingCost === 0 ? "FREE" : `${shippingCost} SAR`;
+            document.getElementById('total').innerText = `${(subtotal + shippingCost).toLocaleString()} SAR`;
+
+            // Progress Bar Logic
+            const fill = document.getElementById('ship-fill');
+            const txt = document.getElementById('ship-text');
+            const percentage = (subtotal / freeShipThreshold) * 100;
+            
+            fill.style.width = `${Math.min(percentage, 100)}%`;
+            if (subtotal >= freeShipThreshold) {
+                txt.innerHTML = "🎉 <strong>You've unlocked Free Shipping!</strong>";
+                fill.style.background = "#064e3b"; // Green when unlocked
+            } else {
+                txt.innerHTML = `Add <strong>${freeShipThreshold - subtotal} SAR</strong> more for Free Shipping.`;
+                fill.style.background = "var(--color-gold)";
+            }
+        }
+
+        // Run on load
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+</html>

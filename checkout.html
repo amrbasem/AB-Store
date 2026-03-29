@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | A.B Store Riyadh</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-navy: #0A0F2C;
+            --color-gold: #C9A84C;
+            --color-gray: #F8F8F8;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --radius-sm: 4px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); color: #1A1A1A; background: #fff; line-height: 1.6; }
+
+        /* MINI NAV (Distraction-Free) */
+        .checkout-nav { padding: 1.5rem 5%; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--color-gold); text-decoration: none; }
+        .secure-tag { font-size: 0.8rem; color: #2E7D32; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+
+        .container { max-width: 1000px; margin: 3rem auto; padding: 0 5%; display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; }
+
+        h2 { font-size: 1.3rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* FORM STYLING */
+        .form-section { margin-bottom: 3rem; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .input-group { margin-bottom: 1.2rem; }
+        label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: #666; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: var(--radius-sm); font-family: inherit; }
+        input:focus { border-color: var(--color-gold); outline: none; }
+
+        /* PAYMENT OPTIONS */
+        .payment-method { border: 1px solid #ddd; padding: 15px; border-radius: var(--radius-sm); margin-bottom: 10px; display: flex; align-items: center; gap: 15px; cursor: pointer; transition: 0.2s; }
+        .payment-method:hover { border-color: var(--color-gold); background: #fffcf5; }
+        .payment-method input { width: auto; accent-color: var(--color-gold); }
+        .payment-method label { margin-bottom: 0; cursor: pointer; color: #1A1A1A; font-weight: 700; }
+
+        /* SUMMARY SIDEBAR */
+        .order-summary { background: var(--color-gray); padding: 2rem; border-radius: 8px; position: sticky; top: 20px; }
+        .summary-item { display: flex; gap: 15px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .summary-img { width: 60px; height: 60px; border-radius: 4px; object-fit: cover; background: #fff; }
+        .summary-details h4 { font-size: 0.9rem; }
+        
+        .totals { margin-top: 1rem; }
+        .row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; }
+        .total-row { font-size: 1.2rem; font-weight: 700; border-top: 1px solid #ddd; padding-top: 15px; margin-top: 15px; color: var(--color-navy); }
+
+        .btn-pay { width: 100%; padding: 18px; background: var(--color-gold); color: white; border: none; border-radius: var(--radius-sm); font-weight: 700; font-size: 1.1rem; cursor: pointer; margin-top: 2rem; transition: 0.3s; }
+        .btn-pay:hover { opacity: 0.9; }
+
+        @media (max-width: 850px) { .container { grid-template-columns: 1fr; } .order-summary { order: -1; } }
+    </style>
+</head>
+<body>
+
+    <header class="checkout-nav">
+        <a href="index.html" class="logo">A.B</a>
+        <div class="secure-tag">🔒 256-BIT SSL SECURE CHECKOUT</div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="form-section">
+                <h2>1. Shipping Address</h2>
+                <div class="grid-2">
+                    <div class="input-group"><label>First Name</label><input type="text" placeholder="Ahmed" required></div>
+                    <div class="input-group"><label>Last Name</label><input type="text" placeholder="Al-Saud" required></div>
+                </div>
+                <div class="input-group"><label>Street Address</label><input type="text" placeholder="King Fahd Road, Al Olaya" required></div>
+                <div class="grid-2">
+                    <div class="input-group"><label>City</label><input type="text" placeholder="Riyadh" required></div>
+                    <div class="input-group"><label>Phone</label><input type="tel" placeholder="+966 5X XXX XXXX" required></div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>2. Payment Method</h2>
+                <div class="payment-method">
+                    <input type="radio" name="pay" id="mada" checked>
+                    <label for="mada">💳 Mada / Credit Card</label>
+                </div>
+                <div class="payment-method">
+                    <input type="radio" name="pay" id="apple">
+                    <label for="apple"> Apple Pay</label>
+                </div>
+                <div class="payment-method">
+                    <input type="radio" name="pay" id="stc">
+                    <label for="stc">📱 STC Pay</label>
+                </div>
+                <div class="payment-method">
+                    <input type="radio" name="pay" id="tabby">
+                    <label for="tabby">💳 Split into 4 with Tabby (0% Interest)</label>
+                </div>
+            </div>
+        </main>
+
+        <aside>
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="checkout-items">
+                    </div>
+
+                <div class="totals">
+                    <div class="row"><span>Subtotal</span><span id="check-sub">0 SAR</span></div>
+                    <div class="row"><span>Shipping</span><span id="check-ship">35 SAR</span></div>
+                    <div class="total-row row"><span>Total</span><span id="check-total">0 SAR</span></div>
+                </div>
+
+                <button class="btn-pay" onclick="completeOrder()">Complete Purchase</button>
+                <p style="font-size: 0.7rem; color: #999; text-align: center; margin-top: 15px;">By clicking, you agree to our Terms of Sale and Privacy Policy.</p>
+            </div>
+        </aside>
+    </div>
+
+    <script src="cart-system.js"></script>
+    <script>
+        function loadSummary() {
+            const list = document.getElementById('checkout-items');
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const shipping = subtotal > 300 ? 0 : 35;
+
+            list.innerHTML = '';
+            cart.forEach(item => {
+                list.innerHTML += `
+                    <div class="summary-item">
+                        <img src="${item.img}" class="summary-img">
+                        <div class="summary-details">
+                            <h4>${item.name}</h4>
+                            <p style="font-size:0.8rem; color:#666">Qty: ${item.qty} · ${(item.price * item.qty).toLocaleString()} SAR</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('check-sub').innerText = `${subtotal.toLocaleString()} SAR`;
+            document.getElementById('check-ship').innerText = shipping === 0 ? "FREE" : `${shipping} SAR`;
+            document.getElementById('check-total').innerText = `${(subtotal + shipping).toLocaleString()} SAR`;
+        }
+
+        function completeOrder() {
+            alert("Thank you for your order! Your luxury items are being prepared for delivery in Riyadh.");
+            localStorage.clear(); // Clear the cart after purchase
+            window.location.href = "index.html"; // Go back to home
+        }
+
+        document.addEventListener('DOMContentLoaded', loadSummary);
+    </script>
+</body>
+</html>

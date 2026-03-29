@@ -1,0 +1,157 @@
+/* ==========================================================================
+   A.B STORE - MASTER STYLESHEET (style.css)
+   ========================================================================== */
+
+:root {
+    --color-navy: #0A0F2C;
+    --color-gold: #C9A84C;
+    --color-white: #FFFFFF;
+    --color-gray-light: #F5F5F5;
+    --color-gray-dark: #1A1A1A;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius-md: 12px;
+    --shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 1. Global Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-gray-dark);
+    line-height: 1.6;
+    background-color: var(--color-white);
+}
+
+/* 2. Saudi Promo Bar */
+.ksa-top-bar {
+    background: #064e3b; /* Saudi Green */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* 3. Navigation */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
+    border-bottom: 1px solid #eee;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    text-decoration: none;
+}
+
+.nav-links a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: var(--color-navy);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-gold);
+}
+
+/* 4. Buttons */
+.btn-primary {
+    background: var(--color-navy);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: var(--color-gold);
+    transform: translateY(-2px);
+}
+
+/* 5. Product Cards */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: 0.3s;
+    background: white;
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-5px);
+}
+
+.img-box {
+    background: var(--color-gray-light);
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.2rem 0;
+}
+
+.product-cat {
+    font-size: 0.75rem;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+.product-price {
+    font-weight: 700;
+    color: var(--color-navy);
+}
+
+/* 6. Cart Badge */
+.cart-badge {
+    background: var(--color-gold);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    position: relative;
+    top: -10px;
+    left: -5px;
+}

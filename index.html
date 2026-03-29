@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.B | Premium Lifestyle Riyadh</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Small page-specific style for the Hero background image */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(10,15,44,0.6), rgba(10,15,44,0.6)), 
+                        url('https://images.unsplash.com/photo-1491336477066-31156b5e4f35?q=80&w=1470');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ksa-top-bar">🇸🇦 FREE EXPRESS SHIPPING TO RIYADH & JEDDAH ON ORDERS OVER 500 SAR</div>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">A.B</a>
+        <nav class="nav-links">
+            <a href="index.html" style="color: var(--color-gold)">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">🛒 <span class="cart-badge">0</span></a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1 style="font-family: var(--font-heading); font-size: 4rem; margin-bottom: 1rem;">Elevated Living</h1>
+            <p style="margin-bottom: 2rem; font-size: 1.2rem;">Curated premium goods delivered to your doorstep.</p>
+            <a href="shop.html" class="btn-primary">Explore Collection</a>
+        </div>
+    </section>
+
+    <section style="padding: 5rem 10%; text-align: center;">
+        <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 3rem;">New Arrivals</h2>
+        
+        <div class="product-grid" id="main-shop-grid"></div>
+    </section>
+
+    <footer style="background: var(--color-navy); color: white; padding: 4rem 10%; text-align: center;">
+        <p>&copy; 2026 A.B Store | Riyadh, Saudi Arabia</p>
+        <div style="margin-top: 20px; font-size: 1.2rem; opacity: 0.6;"> Mada · Apple Pay · Visa </div>
+    </footer>
+
+    <script src="cart-system.js"></script>
+    <script src="shop-logic.js"></script>
+    
+</body>
+</html>

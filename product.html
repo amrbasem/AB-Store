@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Gold Watch | A.B Store Riyadh</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-navy: #0A0F2C;
+            --color-gold: #C9A84C;
+            --color-gray: #F5F5F5;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --radius-md: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); color: #1A1A1A; line-height: 1.6; }
+
+        .navbar { padding: 1.5rem 5%; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--color-gold); text-decoration: none; }
+        .nav-links a { margin-left: 2rem; text-decoration: none; color: var(--color-navy); }
+
+        .container { max-width: 1200px; margin: 3rem auto; padding: 0 5%; }
+        .product-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+
+        /* GALLERY */
+        .main-img { width: 100%; aspect-ratio: 1/1; background: var(--color-gray); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem; }
+        .main-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; cursor: zoom-in; }
+        .main-img:hover img { transform: scale(1.1); }
+        .thumbs { display: flex; gap: 10px; }
+        .thumb { width: 80px; height: 80px; border-radius: 8px; cursor: pointer; border: 2px solid transparent; overflow: hidden; }
+        .thumb.active { border-color: var(--color-gold); }
+        .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* INFO */
+        .p-title { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .p-price { font-size: 1.8rem; font-weight: 700; color: var(--color-gold); margin-bottom: 1.5rem; }
+        .p-desc { color: #666; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem; }
+
+        .qty-box { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+        .qty-input { width: 60px; padding: 10px; border: 1px solid #ddd; text-align: center; border-radius: 4px; }
+
+        .btn-add { 
+            width: 100%; padding: 18px; background: var(--color-navy); color: white; 
+            border: none; border-radius: 4px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.3s;
+        }
+        .btn-add:hover { background: var(--color-gold); transform: translateY(-2px); }
+
+        .trust-badges { margin-top: 2rem; display: flex; gap: 20px; font-size: 0.8rem; color: #888; }
+
+        /* TABS */
+        .tabs { margin-top: 4rem; border-top: 1px solid #eee; padding-top: 2rem; }
+        .tab-btn { background: none; border: none; font-weight: 700; margin-right: 2rem; cursor: pointer; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+        .tab-btn.active { border-color: var(--color-gold); color: var(--color-gold); }
+
+        @media (max-width: 768px) {
+            .product-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">A.B</a>
+        <nav class="nav-links">
+            <a href="shop.html">← Back to Shop</a>
+            <a href="cart.html">🛒 <span class="cart-badge">0</span></a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="product-layout">
+            <div class="gallery">
+                <div class="main-img">
+                    <img id="view-img" src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800" alt="Legacy Gold Watch">
+                </div>
+                <div class="thumbs">
+                    <div class="thumb active" onclick="swap(this, 1524592094714-0f0654e20314)"><img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=200"></div>
+                    <div class="thumb" onclick="swap(this, 1522330994536-1222e86f51df)"><img src="https://images.unsplash.com/photo-1522330994536-1222e86f51df?w=200"></div>
+                    <div class="thumb" onclick="swap(this, 1542496658213-d7123c75b0ef)"><img src="https://images.unsplash.com/photo-1542496658213-d7123c75b0ef?w=200"></div>
+                </div>
+            </div>
+
+            <div class="info">
+                <h1 class="p-title">Legacy Gold Watch</h1>
+                <div class="p-price">1,850 SAR</div>
+                <p class="p-desc">Our flagship timepiece, designed in Riyadh. Featuring a sapphire crystal face, Japanese automatic movement, and a brushed 18k gold-plated stainless steel finish. Water-resistant up to 50 meters.</p>
+                
+                <div class="qty-box">
+                    <strong>Quantity:</strong>
+                    <input type="number" value="1" min="1" class="qty-input" id="buy-qty">
+                </div>
+
+                <button class="btn-add" onclick="triggerAdd()">Add to Shopping Bag</button>
+
+                <div class="trust-badges">
+                    <span>📦 Free Riyadh Delivery</span>
+                    <span>🛡️ 2-Year Warranty</span>
+                    <span>🇸🇦 Mada Supported</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active">Product Details</button>
+            <button class="tab-btn">Reviews (48)</button>
+            <div style="margin-top: 1.5rem; color: #666; font-size: 0.95rem;">
+                <p>The Legacy Gold Watch is built for durability and elegance. Case size: 40mm. Strap material: Genuine Italian leather. Battery life: 3 years. Includes a premium velvet display box and a certificate of authenticity.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="cart-system.js"></script>
+    <script>
+        // Gallery Swap Function
+        function swap(el, id) {
+            document.getElementById('view-img').src = `https://images.unsplash.com/photo-${id}?w=800`;
+            document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // Add to Cart Logic
+        function triggerAdd() {
+            const qty = parseInt(document.getElementById('buy-qty').value);
+            // This calls your central cart-system.js
+            for(let i=0; i < qty; i++) {
+                addToCart(1, 'Legacy Gold Watch', 1850, 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600');
+            }
+        }
+    </script>
+</body>
+</html>
